@@ -12,5 +12,9 @@
     <tr th:each="e : ${someList}">
 		<td th:text="${e}"/><br/>
 	</tr>
+	<tr th:each="e : ${customers}">
+		<td th:text="${e.firstName}"/><br/>
+	</tr>
+	
 </body>
 </html>

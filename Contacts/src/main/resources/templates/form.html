@@ -1,6 +1,7 @@
 <html>
     <body>
-        <form action="#" th:action="@{/}" th:object="${personForm}" method="post">
+        <form action="#" th:action="@{/form}" th:object="${personForm}" method="post">
+        <input type="hidden" th:field="*{id}" />
             <table>
                 <tr>
                     <td>Name:</td>

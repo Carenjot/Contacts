@@ -5,7 +5,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class PersonForm {
-
+	
+	
+	private Long id;
+	
     @NotNull
     @Size(min=2, max=30)
     private String name;
@@ -14,6 +17,14 @@ public class PersonForm {
     @Min(18)
     private Integer age;
 
+    public void setId(Long id) {
+    	this.id = id;
+    }
+    
+    public Long getId() {
+    	return id;
+    }
+    
     public String getName() {
         return this.name;
     }
@@ -33,4 +44,14 @@ public class PersonForm {
     public String toString() {
         return "Person(Name: " + this.name + ", Age: " + this.age + ")";
     }
+
+	public Customer getPerson() {
+		// TODO Auto-generated method stub
+		Customer c = new Customer();
+		
+		c.setName(name);
+		c.setAge(age);
+		c.setId(id);			
+		return c;
+	}
 }

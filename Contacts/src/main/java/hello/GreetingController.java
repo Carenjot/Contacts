@@ -7,6 +7,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -21,7 +22,13 @@ import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 public class GreetingController {
+	@Autowired
+	private CustomerRepository customerRepository;
 	
+    @ModelAttribute(name = "customers")
+    public Iterable<Customer> getCustomers(){
+    	return customerRepository.findAll();
+    }
     @GetMapping("/greeting")
     public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model, HttpSession session,@CookieValue(value = "foo", defaultValue = "hello") String fooCookie,HttpServletResponse response) {
     	response.addCookie(new Cookie("foo", "newValue"));
